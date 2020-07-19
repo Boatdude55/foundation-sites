@@ -4,6 +4,7 @@
 
 @import 'math';
 
+$variant-scale: 25% !default;
 $contrast-warnings: true !default;
 
 ////
@@ -113,13 +114,21 @@ $contrast-warnings: true !default;
 @mixin add-foundation-colors() {
   @if map-has-key($foundation-palette, primary) {
     $primary-color: map-get($foundation-palette, primary) !global;
+    $primary-color-light: scale-color(map-get($foundation-palette, primary), $lightness: $variant-scale) !global;
+    $primary-color-dark: scale-color(map-get($foundation-palette, primary), $lightness: -$variant-scale) !global;
   } @else {
     $primary-color: #1779ba !global;
+    $primary-color-light: scale-color(#1779ba, $lightness: $scale) !global;
+    $primary-color-dark: scale-color(#1779ba, $lightness: $scale) !global;
   }
   @if map-has-key($foundation-palette, secondary) {
     $secondary-color: map-get($foundation-palette, secondary) !global;
+    $secondary-color-light: scale-color(map-get($foundation-palette, secondary), $lightness: $variant-scale) !global;
+    $secondary-color-dark: scale-color(map-get($foundation-palette, secondary), $lightness: -$variant-scale) !global;
   } @else {
     $secondary-color: #767676 !global;
+    $secondary-color-light: scale-color(#767676, $lightness: $variant-scale) !global;
+    $secondary-color-dark: scale-color(#767676, $lightness: -$variant-scale) !global;
   }
   @if map-has-key($foundation-palette, success) {
     $success-color: map-get($foundation-palette, success) !global;
@@ -135,5 +144,20 @@ $contrast-warnings: true !default;
     $alert-color: map-get($foundation-palette, alert) !global;
   } @else {
     $alert-color: #cc4b37 !global;
+  }
+  @if map-has-key($foundation-palette, info) {
+    $info-color: map-get($foundation-palette, info) !global;
+  } @else {
+    $info-color: #4fc3f7 !global;
+  }
+  @if map-has-key($foundation-palette, muted) {
+    $muted-color: map-get($foundation-palette, muted) !global;
+  } @else {
+    $muted-color: #4fc3f7 !global;
+  }
+  @if map-has-key($foundation-palette, disabled) {
+    $disabled-color: map-get($foundation-palette, disabled) !global;
+  } @else {
+    $disabled-color: #4fc3f7 !global;
   }
 }
